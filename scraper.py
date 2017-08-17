@@ -18,7 +18,7 @@ class Scraper:
             link_re = re.compile("[A-Za-z]+://[A-Za-z0-9-_]+.[A-Za-z0-9-_:%&;\?#/.=]+")
             links = link_re.findall(data)
             for link in links:
-                self.links.add(link)
+                sys.stdout.write(link)
                 x = threading.Thread(target=self.scrape, args=(link,))
                 x.start()
                 print(link)

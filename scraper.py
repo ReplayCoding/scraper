@@ -16,7 +16,7 @@ class Scraper:
         sites = self.scrape(site)
         return sites
     def scrape(self, data):
-        if self.count >= 1000:
+        if self.count == 100:
             print("done")
             os._exit(0)
         orig_link = data

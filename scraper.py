@@ -32,7 +32,8 @@ class Scraper:
                 x = threading.Thread(target=self.scrape, args=(link,))
                 x.start()
         except:
-            raise
+            pass
+            #raise
 if __name__ == "__main__":
     scraper = Scraper()
     data = scraper.run(("https://github.com"))

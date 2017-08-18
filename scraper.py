@@ -4,7 +4,6 @@ import threading
 import sys
 import csv
 import os
-import ssl
 
 "A simple web scraper"
 file = open("scrape.csv", "a")
@@ -16,14 +15,11 @@ class Scraper:
         sites = self.scrape(site)
         return sites
     def scrape(self, data):
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
-        ctx.verify_mode = ssl.CERT_NONE
         if self.count > 1000:
             os._exit(0)
         orig_link = data
         try:
-            with urllib.request.urlopen(data, context=ctx) as response:
+            with urllib.request.urlopen(data) as response:
                 data = str(response.read())
             link_re = re.compile("[A-Za-z]+://[A-Za-z0-9-_]+.[A-Za-z0-9-_:%&;\?#/.=]+")
             links = link_re.findall(data)

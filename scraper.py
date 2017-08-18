@@ -10,9 +10,8 @@ writer = csv.writer(file, delimiter=' ', quotechar='"', quoting=csv.QUOTE_ALL)
 class Scraper:
     def run(self, site):
         print("Running")
-        self.links = set()
         sites = self.scrape(site)
-        return self.links
+        return sites
     def scrape(self, data):
         orig_link = data
         try:
@@ -29,4 +28,4 @@ class Scraper:
             pass
 if __name__ == "__main__":
     scraper = Scraper()
-    data = scraper.run(input(">> "))
+    data = scraper.run(("https://github.com"))

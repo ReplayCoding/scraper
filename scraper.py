@@ -25,7 +25,7 @@ class Scraper:
             links = link_re.findall(data)
             for i, link in enumerate(links):
                 self.count += 1
-                sys.stdout.write("{0}:{1}\n".format(str(self.count), link))
+                print("{0}:{1}\n".format(str(self.count), link))
                 writer.writerow([link, orig_link, i])
                 x = threading.Thread(target=self.scrape, args=(link,))
                 x.start()
@@ -33,4 +33,4 @@ class Scraper:
             pass
 if __name__ == "__main__":
     scraper = Scraper()
-    data = scraper.run(("http://github.com"))
+    data = scraper.run(("https://github.com"))
